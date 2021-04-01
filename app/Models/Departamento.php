@@ -15,4 +15,28 @@ class Departamento extends Model
         'indicativo',
         'id_pais'
     ];
+
+    /**
+     * Get the Pais associated with the Departamento.
+     */
+    public function pais()
+    {
+        return $this->hasOne(Pais::class,'id_pais','id');
+    }
+
+    /**
+     * Get the Ciudad that owns the Departamento.
+     */
+    public function ciudad()
+    {
+        return $this->belongsTo(Ciudad::class,'id_ciudad');
+    }
+
+    /**
+     * Get the Telefono that owns the Departamento.
+     */
+    public function telefono()
+    {
+        return $this->belongsTo(Telefono::class);
+    }
 }

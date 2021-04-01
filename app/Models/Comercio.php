@@ -14,9 +14,50 @@ class Comercio extends Model
         'razon_social',
         'direccion',
         'imagen',
-        'id_estado',
+        'id_ciudad',
+        'id_comercio_estado',
         'id_tipo_comercio',
-        'id_propietario',
+        'id_propietario', //es el id de la tabla usuario id_usuario
         'id_telefono'
     ];
+
+    /**
+     * Get the Ciudad associated with the Comercio.
+     */
+    public function ciudad()
+    {
+        return $this->hasOne(Ciudad::class,'id_ciudad','id');
+    }
+
+    /**
+     * Get the ComercioEstado associated with the Comercio.
+     */
+    public function comercioEstado()
+    {
+        return $this->hasOne(ComercioEstado::class,'id_comercio_estado','id');
+    }
+
+    /**
+     * Get the ComercioTipo associated with the Comercio.
+     */
+    public function comercioTipo()
+    {
+        return $this->hasOne(ComercioTipo::class,'id_tipo_comercio','id');
+    }
+
+    /**
+     * Get the Usuario associated with the Comercio.
+     */
+    public function propietario()
+    {
+        return $this->hasOne(Usuario::class,'id_propietario','id');
+    }
+
+    /**
+     * Get the Telefono associated with the Comercio.
+     */
+    public function telefono()
+    {
+        return $this->hasOne(Telefono::class,'id_telefono','id');
+    }
 }

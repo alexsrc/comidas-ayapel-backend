@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoUsuario extends Model
+class UsuarioEstado extends Model
 {
-    protected $table = 'tipo_usuarios';
+    protected $table = 'usuario_estados';
 
     protected $fillable = [
         'id',
-        'nombre'
+        'nombre',
+        'descripcion'
     ];
 }

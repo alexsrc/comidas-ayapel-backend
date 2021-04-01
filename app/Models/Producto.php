@@ -12,6 +12,15 @@ class Producto extends Model
         'id',
         'nombre',
         'descripcion',
-        'id_estado'
+        'imagen',
+        'id_producto_estado'
     ];
+
+    /**
+     * Get the ProductoEstado associated with the Producto.
+     */
+    public function productoEstado()
+    {
+        return $this->hasOne(ProductoEstado::class,'id_producto_estado','id');
+    }
 }

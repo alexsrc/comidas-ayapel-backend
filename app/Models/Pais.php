@@ -14,4 +14,12 @@ class Pais extends Model
         'indicativo',
         'abreviatura'
     ];
+
+    /**
+     * Get the Departamento that owns the Pais.
+     */
+    public function Departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
 }
