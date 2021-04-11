@@ -15,4 +15,14 @@ class UsuarioDireccion extends Model
         'descripcion',
         'id_usuario'
     ];
+
+    public $incrementing = true;
+
+    /**
+     * Get the Usuario associated with the Usuario.
+     */
+    public function usuario()
+    {
+        return $this->hasMany(Usuario::class);
+    }
 }

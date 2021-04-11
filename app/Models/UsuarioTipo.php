@@ -12,4 +12,14 @@ class UsuarioTipo extends Model
         'id',
         'nombre'
     ];
+
+    public $incrementing = true;
+
+    /**
+     * Get the Usuario that owns the UsuarioEstado.
+     */
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuario_tipo');
+    }
 }

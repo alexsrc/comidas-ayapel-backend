@@ -13,6 +13,8 @@ class ComercioTipo extends Model
         'nombre'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Comercio that owns the ComercioTipo.
      */

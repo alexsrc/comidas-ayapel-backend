@@ -14,6 +14,9 @@ class ComercioEstado extends Model
         'descripcion'
     ];
 
+    public $incrementing = true;
+
+
     /**
      * Get the Comercio that owns the ComercioEstado.
      */

@@ -16,6 +16,8 @@ class Producto extends Model
         'id_producto_estado'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the ProductoEstado associated with the Producto.
      */

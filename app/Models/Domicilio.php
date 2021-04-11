@@ -19,6 +19,8 @@ class Domicilio extends Model
 
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the DomicilioEstado associated with the Domicilio.
      */

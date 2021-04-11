@@ -14,6 +14,8 @@ class ProductoEstado extends Model
         'estado' // 1 ó 0
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Producto that owns the Pais.
      */

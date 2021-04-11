@@ -14,16 +14,44 @@ class Usuario extends Model
         'apellidos',
         'edad',
         'imagen',
-        'id_tipo_usuario',
+        'id_usuario_tipo',
         'id_ciudad',
-        'id_estado'
+        'id_usuario_estado'
     ];
 
+    public $incrementing = true;
+
     /**
-     * Get the TelefonoTipo associated with the Telefono.
+     * Get the UsuarioTipo associated with the Usuario.
      */
-    public function telefonoTipo()
+    public function usuarioTipo()
     {
-        return $this->hasOne(TelefonoTipo::class,'id_telefono_tipo','id');
+        return $this->hasOne(UsuarioTipo::class,'id_usuario_tipo','id');
     }
+
+    /**
+     * Get the Ciudad associated with the Usuario.
+     */
+    public function ciudad()
+    {
+        return $this->hasOne(Ciudad::class,'id_ciudad','id');
+    }
+
+    /**
+     * Get the UsuarioEstado associated with the Usuario.
+     */
+    public function usuarioEstado()
+    {
+        return $this->hasOne(UsuarioEstado::class,'id_usuario_estado','id');
+    }
+
+
+    /**
+     * Get the UsuarioDireccion that owns the Usuario.
+     */
+    public function usuarioDireccion()
+    {
+        return $this->belongsTo(UsuarioDireccion::class);
+    }
+
 }

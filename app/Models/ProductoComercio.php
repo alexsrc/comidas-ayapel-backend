@@ -15,6 +15,8 @@ class ProductoComercio extends Model
         'id_producto'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Comercio for the ProductoComercio.
      */

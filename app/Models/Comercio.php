@@ -16,10 +16,13 @@ class Comercio extends Model
         'imagen',
         'id_ciudad',
         'id_comercio_estado',
-        'id_tipo_comercio',
+        'id_comercio_tipo',
         'id_propietario', //es el id de la tabla usuario id_usuario
         'id_telefono'
     ];
+
+    public $incrementing = true;
+
 
     /**
      * Get the Ciudad associated with the Comercio.
@@ -42,7 +45,7 @@ class Comercio extends Model
      */
     public function comercioTipo()
     {
-        return $this->hasOne(ComercioTipo::class,'id_tipo_comercio','id');
+        return $this->hasOne(ComercioTipo::class,'id_comercio_tipo','id');
     }
 
     /**

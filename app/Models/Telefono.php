@@ -15,6 +15,8 @@ class Telefono extends Model
         'id_telefono_tipo'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Departamento associated with the Telefono.
      */

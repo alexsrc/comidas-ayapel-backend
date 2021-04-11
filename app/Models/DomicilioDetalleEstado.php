@@ -14,6 +14,8 @@ class DomicilioDetalleEstado extends Model
         'estado' // 1 ó 0
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the DomicilioDetalle that owns the DomicilioDetalleEstado.
      */

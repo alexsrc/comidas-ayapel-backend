@@ -13,6 +13,8 @@ class TelefonoTipo extends Model
         'nombre'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Telefono that owns the TelefonoTipo.
      */

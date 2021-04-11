@@ -16,6 +16,8 @@ class Departamento extends Model
         'id_pais'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Pais associated with the Departamento.
      */

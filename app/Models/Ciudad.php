@@ -14,6 +14,8 @@ class Ciudad extends Model
         'id_departamento'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Departamento associated with the Ciudad.
      */

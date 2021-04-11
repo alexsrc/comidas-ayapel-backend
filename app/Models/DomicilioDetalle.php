@@ -15,6 +15,8 @@ class DomicilioDetalle extends Model
         'id_domicilio_detalle_estado'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Domicilio for the DomicilioDetalle.
      */

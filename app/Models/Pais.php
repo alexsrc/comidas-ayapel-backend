@@ -15,6 +15,8 @@ class Pais extends Model
         'abreviatura'
     ];
 
+    public $incrementing = true;
+
     /**
      * Get the Departamento that owns the Pais.
      */
