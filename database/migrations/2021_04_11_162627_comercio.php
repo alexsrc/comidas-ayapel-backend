@@ -14,7 +14,7 @@ class Comercio extends Migration
     public function up()
     {
         Schema::create('comercios', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->string('razon_social');
             $table->string('direccion');

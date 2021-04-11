@@ -14,7 +14,7 @@ class ComercioTipo extends Migration
     public function up()
     {
         Schema::create('comercio_tipos', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->timestamps();
         });

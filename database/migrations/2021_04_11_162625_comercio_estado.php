@@ -14,7 +14,7 @@ class ComercioEstado extends Migration
     public function up()
     {
         Schema::create('comercio_estados', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->string('descripcion');
             $table->timestamps();

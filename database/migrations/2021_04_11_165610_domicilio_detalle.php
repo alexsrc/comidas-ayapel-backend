@@ -14,7 +14,7 @@ class DomicilioDetalle extends Migration
     public function up()
     {
         Schema::create('domicilio_detalles', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->integer('id_producto');
             $table->integer('id_domicilio');
             $table->integer('id_domicilio_detalle_estado');

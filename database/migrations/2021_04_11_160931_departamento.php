@@ -14,7 +14,7 @@ class Departamento extends Migration
     public function up()
     {
         Schema::create('departamentos', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->string('abreviatura');
             $table->integer('indicativo');

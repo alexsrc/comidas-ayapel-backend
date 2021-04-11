@@ -14,12 +14,12 @@ class Domicilio extends Migration
     public function up()
     {
         Schema::create('domicilios', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('direccion');
             $table->string('descripcion');
             $table->string('celular');
             $table->string('nombres');
-            $table->dateTime('fecha_creacion')->default(new DateTime("now"));
+            $table->dateTime('fecha_creacion');
             $table->integer('id_domicilio_estado');
             $table->foreign('id_domicilio_estado')->references('id')->on('domicilio_estados');
             $table->timestamps();

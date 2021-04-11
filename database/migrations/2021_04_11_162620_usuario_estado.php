@@ -14,7 +14,7 @@ class UsuarioEstado extends Migration
     public function up()
     {
         Schema::create('usuario_estados', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->string('descripcion');
             $table->timestamps();

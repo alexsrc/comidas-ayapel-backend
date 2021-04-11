@@ -14,7 +14,7 @@ class Telefono extends Migration
     public function up()
     {
         Schema::create('telefonos', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('numero');
             $table->integer('id_departamento');
             $table->integer('id_telefono_tipo');

@@ -14,7 +14,7 @@ class DomicilioEstado extends Migration
     public function up()
     {
         Schema::create('domicilio_estados', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->boolean('estado');
             $table->timestamps();

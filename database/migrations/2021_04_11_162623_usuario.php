@@ -14,7 +14,7 @@ class Usuario extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->unique()->autoIncrement();
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('edad');
@@ -24,7 +24,7 @@ class Usuario extends Migration
             $table->integer('id_usuario_estado');
             $table->foreign('id_usuario_tipo')->references('id')->on('usuario_tipos');
             $table->foreign('id_ciudad')->references('id')->on('ciudades');
-            $table->foreign('id_usuario_estado')->references('id')->on('usuarios_estados');
+            $table->foreign('id_usuario_estado')->references('id')->on('usuario_estados');
             $table->timestamps();
         });
     }
