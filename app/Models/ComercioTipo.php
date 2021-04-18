@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ComercioTipo extends Model
 {
-    protected $table = 'tipo_comercios';
+    protected $table = 'comercio_tipos';
 
     protected $fillable = [
         'id',
