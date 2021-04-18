@@ -17,7 +17,7 @@ class Departamento extends Migration
             $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
             $table->string('abreviatura');
-            $table->integer('indicativo');
+            $table->integer('indicativo')->nullable();
             $table->integer('id_pais');
             $table->foreign('id_pais')->references('id')->on('paises');
             $table->timestamps();

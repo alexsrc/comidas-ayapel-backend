@@ -17,8 +17,8 @@ class Usuario extends Migration
             $table->integer('id')->unique()->autoIncrement();
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('edad');
-            $table->string('imagen');
+            $table->dateTime('fecha_nacimiento');
+            $table->string('imagen')->nullable();
             $table->integer('id_usuario_tipo');
             $table->integer('id_ciudad');
             $table->integer('id_usuario_estado');

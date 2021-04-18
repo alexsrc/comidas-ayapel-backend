@@ -12,7 +12,7 @@ class Usuario extends Model
         'id',
         'nombres',
         'apellidos',
-        'edad',
+        'fecha_nacimiento',
         'imagen',
         'id_usuario_tipo',
         'id_ciudad',

@@ -23,7 +23,7 @@ class UsuariosSeeder extends Seeder
             $usuario                    =   new Usuario();
             $usuario->nombres           =   $faker->firstName;
             $usuario->apellidos         =   $faker->lastName;
-            $usuario->edad              =   rand(12,90);
+            $usuario->fecha_nacimiento  =   $faker->dateTimeBetween("-90 years","-12 years");
             $usuario->imagen            =   null;
             $usuario->id_usuario_tipo   =   (UsuarioTipo::where("nombre","Cliente")->first())->id;
             $usuario->id_ciudad         =   (Ciudad::where("nombre","Ayapel")->first())->id;

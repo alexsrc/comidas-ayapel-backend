@@ -14,12 +14,15 @@ class TelefonoTiposSeeder extends Seeder
      */
     public function run()
     {
-        $tefonoTipo         =   new TelefonoTipo();
-        $tefonoTipo->name   =   "Fijo";
-        $tefonoTipo->save();
+        $telefonoTipos=[
+            "Fijo",
+            "Celular"
+        ];
 
-        $tefonoTipo         =   new TelefonoTipo();
-        $tefonoTipo->name   =   "Celular";
-        $tefonoTipo->save();
+        foreach ($telefonoTipos as $telefonoTipo){
+            $tefonoTipoModel         =   new TelefonoTipo();
+            $tefonoTipoModel->nombre   =   $telefonoTipo;
+            $tefonoTipoModel->save();
+        }
     }
 }

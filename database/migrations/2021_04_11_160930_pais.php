@@ -16,7 +16,7 @@ class Pais extends Migration
         Schema::create('paises', function (Blueprint $table) {
             $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
-            $table->integer('indicativo');
+            $table->integer('indicativo')->nullable();
             $table->string('abreviatura');
             $table->timestamps();
         });

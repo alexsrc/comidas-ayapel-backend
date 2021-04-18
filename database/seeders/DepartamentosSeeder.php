@@ -26,7 +26,6 @@ class DepartamentosSeeder extends Seeder
                 $depart = new Departamento();
                 $depart->nombre         =   $departamento->departamento;
                 $depart->abreviatura    =   substr($departamento->departamento,0,3);
-                $depart->indicativo     =   1;
                 $depart->id_pais        =   $pais->id;
                 $depart->save();
             }
