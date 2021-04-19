@@ -1,1 +1,5 @@
-'faker_locale' => 'es_ES',
+<?php
+    return [
+        'faker_locale' => 'es_ES',
+    ];
+?>

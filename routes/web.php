@@ -16,3 +16,5 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get("/v1/company/categories","ComercioController@categoriesWithCompany");

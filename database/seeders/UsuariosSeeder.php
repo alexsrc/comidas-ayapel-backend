@@ -19,7 +19,7 @@ class UsuariosSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i=0;$i<30;$i++){
+        for ($i=0;$i<1;$i++){
             $usuario                    =   new Usuario();
             $usuario->nombres           =   $faker->firstName;
             $usuario->apellidos         =   $faker->lastName;
