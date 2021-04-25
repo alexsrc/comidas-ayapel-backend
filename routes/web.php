@@ -18,3 +18,4 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get("/v1/company/categories","ComercioController@categoriesWithCompany");
+$router->post("/v1/company/categories","ComercioController@categoriesWithCompany");
