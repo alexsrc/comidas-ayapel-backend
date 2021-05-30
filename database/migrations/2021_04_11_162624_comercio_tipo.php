@@ -16,6 +16,7 @@ class ComercioTipo extends Migration
         Schema::create('comercio_tipos', function (Blueprint $table) {
             $table->integer('id')->unique()->autoIncrement();
             $table->string('nombre');
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,8 @@ class ComercioTipo extends Model
 
     protected $fillable = [
         'id',
-        'nombre'
+        'nombre',
+        'imagen'
     ];
 
     public $incrementing = true;

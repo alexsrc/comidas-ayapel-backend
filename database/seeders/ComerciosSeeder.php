@@ -59,7 +59,7 @@ class ComerciosSeeder extends Seeder
             $comercios->nombre              =   $faker->company;
             $comercios->razon_social        =   $comercios->nombre;
             $comercios->direccion           =   $faker->streetAddress;
-            $comercios->imagen              =   $faker->imageUrl(640,480,"cats");
+            $comercios->imagen              =   $faker->imageUrl(640,480,$faker->company);
             $comercios->id_ciudad           =   $usuario->id_ciudad;
             $comercios->id_comercio_estado  =   $comercioEstado;
             $comercios->id_comercio_tipo    =   (ComercioTipo::where("nombre",$comercioTipos[rand(0,11)])->first())->id;

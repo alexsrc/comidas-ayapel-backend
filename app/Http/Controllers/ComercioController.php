@@ -52,13 +52,26 @@ class ComercioController extends Controller
         return $this->response($data,200);
     }
 
-    public function listProductByCompany($id){
-        $listProductByCompany=ProductoComercio::select("producto_comercios.id as key","productos.nombre as name","productos.imagen as photo_url")
+    public function listProductByCompany(Request $request){
+        $data=$request->all();
+        $id=$data["id"];
+        $filter=$data["filter"];
+        $listProductByCompany=ProductoComercio::select(
+            "producto_comercios.id as key",
+            "productos.nombre as name",
+            "productos.imagen as photo_url",
+            "productos.descripcion as description",
+            "producto_comercios.valor as amount"
+        )
             ->Join("productos","producto_comercios.id_producto","productos.id")
             ->Join("comercios","comercios.id","producto_comercios.id_comercio")
             ->where("comercios.id",$id)
-            ->where("productos.id_producto_estado",1)
-            ->get();
+            ->where("productos.id_producto_estado",1);
+
+        if($filter!=""){
+            $listProductByCompany=$listProductByCompany->where("productos.nombre","like","%$filter%");
+        }
+        $listProductByCompany=$listProductByCompany->paginate(10);
 
         $data=[
             "status"            =>  true,

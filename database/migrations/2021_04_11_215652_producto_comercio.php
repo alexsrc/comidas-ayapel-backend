@@ -18,6 +18,7 @@ class ProductoComercio extends Migration
             $table->string('descripcion');
             $table->integer('id_comercio');
             $table->integer('id_producto');
+            $table->float('valor')->default(0);
             $table->foreign('id_comercio')->references('id')->on('comercios');
             $table->foreign('id_producto')->references('id')->on('productos');
             $table->timestamps();

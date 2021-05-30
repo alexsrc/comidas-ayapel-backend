@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\ComercioTipo;
 use Illuminate\Database\Seeder;
+use Faker;
 
 class ComercioTiposSeeder extends Seeder
 {
@@ -28,10 +29,12 @@ class ComercioTiposSeeder extends Seeder
             "Floristeria",
             "Bebes"
         ];
+        $faker = Faker\Factory::create();
 
         foreach ($comercioTipos as $comercioTipo){
             $comercioTipoModel          =    new ComercioTipo();
             $comercioTipoModel->nombre  =   $comercioTipo;
+            $comercioTipoModel->imagen  =   $faker->imageUrl(640,480,$comercioTipo);
             $comercioTipoModel->save();
         }
     }

@@ -15,20 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call(DomicilioEstadosSeeder::class);
-//        $this->call(PaisesSeeder::class);
-//        $this->call(DepartamentosSeeder::class);
-//        $this->call(CiudadesSeeder::class);
-//        $this->call(TelefonoTiposSeeder::class);
-//        $this->call(ProductoEstadosSeeder::class);
-//        $this->call(ComercioTiposSeeder::class);
-//        $this->call(UsuarioEstadosSeeder::class);
-//        $this->call(UsuarioTiposSeeder::class);
-//        $this->call(UsuariosSeeder::class);
-//        $this->call(ComercioEstadosSeeder::class);
-//        $this->call(TelefonosSeeder::class);
-//        $this->call(ComerciosSeeder::class);
-//        $this->call(ProductoSeeder::class);
+        $this->call(DomicilioEstadosSeeder::class);
+        $this->call(PaisesSeeder::class);
+        $this->call(DepartamentosSeeder::class);
+        $this->call(CiudadesSeeder::class);
+        $this->call(TelefonoTiposSeeder::class);
+        $this->call(ProductoEstadosSeeder::class);
+        $this->call(ComercioTiposSeeder::class);
+        $this->call(UsuarioEstadosSeeder::class);
+        $this->call(UsuarioTiposSeeder::class);
+        $this->call(UsuariosSeeder::class);
+        $this->call(ComercioEstadosSeeder::class);
+        $this->call(TelefonosSeeder::class);
+        $this->call(ComerciosSeeder::class);
+        $this->call(ProductoSeeder::class);
         $this->call(ProductoComercioSeeder::class);
     }
 }
