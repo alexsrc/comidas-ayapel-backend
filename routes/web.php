@@ -21,6 +21,8 @@ $router->get("/v1/company/categories","ComercioController@categoriesWithCompany"
 $router->post("/v1/company/categories","ComercioController@categoriesWithCompany");
 
 
+$router->post("/v1/companies","ComercioController@listCompanies");
+
 $router->get("/v1/company/companies/{id}/{filter}","ComercioController@listCompaniesByCategory");
 $router->post("/v1/company/companies","ComercioController@listCompaniesByCategory");
 

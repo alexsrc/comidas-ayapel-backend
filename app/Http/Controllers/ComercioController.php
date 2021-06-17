@@ -29,6 +29,27 @@ class ComercioController extends Controller
         return $this->response($data,200);
     }
 
+    public function listCompanies(Request $request){
+        $data=$request->all();
+        $filter=$data["filter"];
+        $listCompaniesByCategory=Comercio::select("comercios.id as key","comercios.nombre as name","comercios.imagen as photo_url")
+            ->selectRaw("count(producto_comercios.id) as id")
+            ->LeftJoin("producto_comercios","producto_comercios.id_comercio","comercios.id")
+            ->groupBy("comercios.id");
+        if($filter!=""){
+            $listCompaniesByCategory=$listCompaniesByCategory->where("comercios.nombre","like","%$filter%");
+        }
+        $listCompaniesByCategory=$listCompaniesByCategory->paginate(10);;
+
+        $data=[
+            "status"            =>  true,
+            "response_text"     =>  "lista de comercios por tipo",
+            "data"              =>  $listCompaniesByCategory
+        ];
+
+        return $this->response($data,200);
+    }
+
     public function listCompaniesByCategory(Request $request){
         $data=$request->all();
         $id=$data["id"];
