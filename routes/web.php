@@ -17,14 +17,24 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get("/v1/company/categories","ComercioController@categoriesWithCompany");
-$router->post("/v1/company/categories","ComercioController@categoriesWithCompany");
+$router->post('/login', ['uses' => 'AuthController@authenticate']);
+
+$router->group(
+    ['middleware' => 'jwt.auth'],
+    function () use ($router) {
+        $router->group(['prefix' => 'v1'], function () use ($router) {
+
+            $router->get("/company/categories", "ComercioController@categoriesWithCompany");
+            $router->post("/company/categories", "ComercioController@categoriesWithCompany");
 
 
-$router->post("/v1/companies","ComercioController@listCompanies");
+            $router->post("/companies", "ComercioController@listCompanies");
 
-$router->get("/v1/company/companies/{id}/{filter}","ComercioController@listCompaniesByCategory");
-$router->post("/v1/company/companies","ComercioController@listCompaniesByCategory");
+            $router->get("/company/companies/{id}/{filter}", "ComercioController@listCompaniesByCategory");
+            $router->post("/company/companies", "ComercioController@listCompaniesByCategory");
 
-$router->get("/v1/company/products/{id}","ComercioController@listProductByCompany");
-$router->post("/v1/company/products/{id}","ComercioController@listProductByCompany");
+            $router->get("/company/products/{id}", "ComercioController@listProductByCompany");
+            $router->post("/company/products/{id}", "ComercioController@listProductByCompany");
+        });
+    }
+);

@@ -14,6 +14,8 @@ class Usuario extends Model
         'apellidos',
         'fecha_nacimiento',
         'imagen',
+        'celular',
+        'contrasena',
         'id_usuario_tipo',
         'id_ciudad',
         'id_usuario_estado'
