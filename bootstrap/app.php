@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+ $app->withFacades();
 
  $app->withEloquent();
 
@@ -83,11 +83,6 @@ $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
     App\Http\Middleware\CorsMiddleware::class
 //    \Barryvdh\Cors\HandleCors::class,
-]);
-
-
-$app->routeMiddleware([
-    'jwt.auth' => App\Http\Middleware\JwtMiddleware::class
 ]);
 
 

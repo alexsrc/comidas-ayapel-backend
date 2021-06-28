@@ -18,6 +18,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/login', ['uses' => 'AuthController@authenticate']);
+$router->post('/v1/register',  'UsuarioController@register');
 
 $router->group(
     ['middleware' => 'jwt.auth'],

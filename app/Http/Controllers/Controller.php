@@ -14,4 +14,13 @@ class Controller extends BaseController
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
+
+    public function validateField($field){
+        $validate=true;
+        if($field===null || $field===""){
+            $validate=false;
+        }
+
+        return $validate;
+    }
 }

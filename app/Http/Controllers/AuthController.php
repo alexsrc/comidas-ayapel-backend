@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 
@@ -54,11 +55,16 @@ class AuthController extends Controller
 
             // Find the user by email
 
-            $usuario=Usuario::where("celular",$cellphone)->where("contrasena",$password)->first();
+            $usuario=Usuario::where("celular",$cellphone)->first();
+
+            if($usuario){
+                $validatePassword=Hash::check($password,$usuario->contrasena);
+            }
+
 
             $token="";
             $status=200;
-            if($usuario){
+            if($usuario && $validatePassword){
                 $token=$this->jwt($usuario);
                 $data=[
                     "status"            =>  true,
@@ -68,9 +74,9 @@ class AuthController extends Controller
             }else{
                 $status=401;
                 $data=[
-                    "status"            =>  true,
+                    "status"            =>  false,
                     "response_text"     =>  "autenticación fallida",
-                    "data"              =>  ["token"=>$token]
+                    "data"              =>  []
                 ];
             }
 

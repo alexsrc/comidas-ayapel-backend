@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Comercio;
 use App\Models\ComercioTipo;
-use App\Models\Producto;
 use App\Models\ProductoComercio;
-use Illuminate\Http\JsonResponse;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class ComercioController extends Controller
 {
@@ -102,4 +100,47 @@ class ComercioController extends Controller
 
         return $this->response($data,200);
     }
+
+    public function register(Request $request){
+        $data=$request->all();
+        $name=$data["name"];
+        $lastname=$data["lastname"];
+        $cellphone=$data["cellphone"];
+        $password=$data["password"];
+        $confirmPassword=$data["confirmPassword"];
+
+
+        $errorField=[];
+
+        if(!$this->validate($name))array_push($errorField,"El campo nombre es obligatorio");
+        if(!$this->validate($lastname))array_push($errorField,"El campo apellido es obligatorio");
+        if(!$this->validate($cellphone))array_push($errorField,"El campo celulares es obligatorio");
+        if(!$this->validate($password))array_push($errorField,"El campo contraseña es obligatorio");
+        if(!$this->validate($confirmPassword))array_push($errorField,"El campo confirmación contraseña es obligatorio");
+
+        if(count($errorField)>0) {
+            return $this->response([
+                "status"            =>  false,
+                "response_text"     =>  "Registro",
+                "data"              =>  $errorField
+            ],200);
+        }
+
+        if($this->validate($password) && $confirmPassword!==$password)array_push($errorField,"Los campos contraseña y confirmación contraseña no son iguales");
+
+        $usuario=new Usuario();
+        $usuario->nombres=$name;
+        $usuario->apellidos=$lastname;
+        $usuario->celular=$cellphone;
+        $usuario->id_usuario_tipo=2;
+        $usuario->contrasena=Hask::make($confirmPassword,["rounds"=>12]);
+        $usuario->save();
+
+        return $this->response([
+            "status"            =>  true,
+            "response_text"     =>  "Registro",
+            "data"              =>  []
+        ],200);
+    }
+
 }
