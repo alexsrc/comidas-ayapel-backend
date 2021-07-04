@@ -57,14 +57,15 @@ class AuthController extends Controller
 
             $usuario=Usuario::where("celular",$cellphone)->first();
 
+            $validatePassword=false;
             if($usuario){
                 $validatePassword=Hash::check($password,$usuario->contrasena);
             }
 
 
-            $token="";
+
             $status=200;
-            if($usuario && $validatePassword){
+            if($validatePassword){
                 $token=$this->jwt($usuario);
                 $data=[
                     "status"            =>  true,
