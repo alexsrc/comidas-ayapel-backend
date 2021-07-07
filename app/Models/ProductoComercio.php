@@ -13,7 +13,8 @@ class ProductoComercio extends Model
         'descripcion',
         'valor',
         'id_comercio',
-        'id_producto'
+        'id_producto',
+        'id_producto_estado'
     ];
 
     public $incrementing = true;
@@ -32,5 +33,14 @@ class ProductoComercio extends Model
     public function producto()
     {
         return $this->hasMany(Producto::class,'id_producto','id');
+    }
+
+
+    /**
+     * Get the ProductoEstado for the ProductoComercio.
+     */
+    public function productoEstado()
+    {
+        return $this->hasMany(ProductoEstado::class,'id_producto_estado','id');
     }
 }

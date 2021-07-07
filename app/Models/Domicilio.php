@@ -16,6 +16,10 @@ class Domicilio extends Model
         'nombres',
         'fecha_creacion',
         'id_domicilio_estado',
+        'id_ciudad',
+        'direccion_descripcion',
+        'longitud',
+        'latitud',
 
     ];
 
@@ -33,6 +37,14 @@ class Domicilio extends Model
      * Get the DomicilioDetalle that owns the Domicilio.
      */
     public function domicilioDetalle()
+    {
+        return $this->belongsTo(DomicilioDetalle::class,'id_domicilio');
+    }
+
+    /**
+     * Get the ciudad that owns the Domicilio.
+     */
+    public function ciudad()
     {
         return $this->belongsTo(DomicilioDetalle::class,'id_domicilio');
     }

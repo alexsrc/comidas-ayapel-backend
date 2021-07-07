@@ -20,7 +20,7 @@ class Usuario extends Migration
             $table->dateTime('fecha_nacimiento');
             $table->string('imagen')->nullable();
             $table->string('celular')->nullable();
-            $table->string('password')->nullable();
+            $table->string('contrasena')->nullable();
             $table->integer('id_usuario_tipo');
             $table->integer('id_ciudad');
             $table->integer('id_usuario_estado');

@@ -25,6 +25,7 @@ class ProductoComercioSeeder extends Seeder
                 $productoComercioModel->descripcion =   $productos[$i]->descripcion;
                 $productoComercioModel->id_comercio =   $comercio->id;
                 $productoComercioModel->id_producto =   $productos[$i]->id;
+                $productoComercioModel->id_producto_estado =   rand(1,3);
                 $productoComercioModel->valor       =   rand(1000,45000);
                 $productoComercioModel->save();
             }

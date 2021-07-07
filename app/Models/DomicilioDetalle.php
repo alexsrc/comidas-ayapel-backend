@@ -12,7 +12,10 @@ class DomicilioDetalle extends Model
         'id',
         'id_producto',
         'id_domicilio',
-        'id_domicilio_detalle_estado'
+        'id_domicilio_detalle_estado',
+        'cantidad',
+        'valor',
+        'valor_total'
     ];
 
     public $incrementing = true;

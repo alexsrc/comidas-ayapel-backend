@@ -31,4 +31,12 @@ class Ciudad extends Model
     {
         return $this->belongsTo(Comercio::class,'id_ciudad');
     }
+
+    /**
+     * Get the Domicilio that owns the Ciudad.
+     */
+    public function domicilio()
+    {
+        return $this->belongsTo(Ciudad::class,'id_ciudad');
+    }
 }

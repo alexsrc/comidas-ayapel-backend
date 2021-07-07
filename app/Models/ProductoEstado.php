@@ -23,4 +23,13 @@ class ProductoEstado extends Model
     {
         return $this->belongsTo(Producto::class);
     }
+
+
+    /**
+     * Get the ProductoComercio that owns the Pais.
+     */
+    public function ProductoComercio()
+    {
+        return $this->belongsTo(ProductoComercio::class);
+    }
 }
