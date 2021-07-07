@@ -103,7 +103,7 @@ class AuthController extends Controller
 
         $payload = [
             'iss' => "comidasAyapelJWT", // Issuer of the token
-            'sub' => $user, // Subject of the token
+            'sub' => $user->id, // Subject of the token
             'iat' => time(), // Time when JWT was issued.
             'exp' => time() + 60 * 60, // Expiration time
             'rand'=>  md5(microtime()).rand(0,1000000)

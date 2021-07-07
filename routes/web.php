@@ -36,6 +36,9 @@ $router->group(
 
             $router->get("/company/products/{id}", "ComercioController@listProductByCompany");
             $router->post("/company/products/{id}", "ComercioController@listProductByCompany");
+
+
+            $router->post("/order", "PedidoController@createOrder");
         });
     }
 );

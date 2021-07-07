@@ -21,11 +21,11 @@ class PedidoController extends Controller
         $arrayProducts=$data["arrayProducts"];
 
         $address=$data["address"];
-        $description=$data["description"];
         $latitude=$data["latitude"];
         $longitude=$data["longitude"];
         $addressDescription=$data["addressDescription"];
         $usuarioId=$data["usuarioId"];
+        $errorField=[];
 
         if(!$this->validateField($arrayProducts))array_push($errorField,"El campo arrayProducts es obligatorio");
         if(!$this->validateField($address))array_push($errorField,"El campo address es obligatorio");
@@ -38,23 +38,23 @@ class PedidoController extends Controller
 
         if(count($arrayProducts)>0){
             $comercio=Comercio::Join("producto_comercios","producto_comercios.id_comercio","comercios.id")
-                ->where("producto_comercios.id",$arrayProducts[0]->id)->first();
+                ->where("producto_comercios.id",$arrayProducts[0]["id"])->first();
 
             if(!$comercio || $comercio->id_comercio_estado!==1){
                 array_push($errorField,"El comercio no esta disponible");
             }
+            $textPedido="";
             $valortotal=0;
             foreach ($arrayProducts as $arrayProduct){
-                $productComercio=ProductoComercio::where("id",$arrayProduct->id)->first();
+                $productComercio=ProductoComercio::where("id",$arrayProduct["id"])->first();
                 if(!$productComercio || $productComercio->id_producto_estado!==1){
                     array_push($errorField,"El producto no esta disponible");
                     break;
                 }
 
                 $product=Producto::find($productComercio->id_producto);
-                $textPedido.="Producto: {$product->nombre}, Cantidad: {$arrayProduct->quantity}, valor: {$arrayProduct->amount}, Descripción: {$arrayProduct->description}
-                ";
-                $valortotal+=$arrayProduct->amount;
+                $textPedido.="Producto: {$product->nombre}, Cantidad: {$arrayProduct["quantity"]}, valor: {$arrayProduct["amount"]}, Descripción: {$arrayProduct["description"]}\n";
+                $valortotal+=$arrayProduct["amount"];
             }
 
             $textPedido.="Valor total: {$valortotal}";
@@ -77,32 +77,33 @@ class PedidoController extends Controller
 
         $domicilio = new Domicilio();
         $domicilio->direccion=$address;
-        $domicilio->descripcion=$description;
+        $domicilio->descripcion=$addressDescription;
         $domicilio->latitud=$latitude;
         $domicilio->longitud=$longitude;
         $domicilio->celular=$usuario->celular;
         $domicilio->nombres= $usuario->nombres." ".$usuario->apellidos;
         $domicilio->fecha_creacion=new \DateTime("now");
         $domicilio->id_domicilio_estado=7;
-        $domicilio->ciudad=$city->id;
+        $domicilio->id_ciudad=$city->id;
         $domicilio->save();
 
 
         foreach ($arrayProducts as $arrayProduct){
             $domicilioDetalle = new DomicilioDetalle();
-            $domicilioDetalle->id_producto=$arrayProduct->id;
-            $domicilioDetalle->cantidad=$arrayProduct->quantity;
-            $domicilioDetalle->valor=$arrayProduct->amount;
-            $domicilioDetalle->valor_total=$arrayProduct->totalAmount;
+            $domicilioDetalle->id_producto=$arrayProduct["id"];
+            $domicilioDetalle->cantidad=$arrayProduct["quantity"];
+            $domicilioDetalle->valor=($arrayProduct["amount"]/$arrayProduct["quantity"]);
+            $domicilioDetalle->valor_total=$arrayProduct["amount"];
             $domicilioDetalle->id_domicilio_detalle_estado=1;
+            $domicilioDetalle->id_domicilio=$domicilio->id;
             $domicilioDetalle->save();
         }
 
 
 
         $celularComercio=Telefono::find($comercio->id_telefono);
-
-        $whatsapp='whatsapp://send?text=' . $textPedido . '&phone=57' + $celularComercio->numero;
+        $textPedido.="\n Dirección: $address, $addressDescription \n Ubicación: https://maps.google.com/?q={$latitude},{$longitude}";
+        $whatsapp='whatsapp://send?text=' . $textPedido . '&phone=57' . $celularComercio->numero;
 
         return $this->response([
             "status"            =>  true,

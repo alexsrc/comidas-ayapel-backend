@@ -56,7 +56,7 @@ class JwtMiddleware
             $tokenDecode = JWT::decode($token, env('JWT_SECRET'),array('HS256'));
             $decoded_array = (array)$tokenDecode;
             $clienteId = $decoded_array['sub'];
-            $request->request->add(['clientId' => $clienteId]);
+            $request->request->add(['usuarioId' => $clienteId]);
 
         } catch (\Exception $ex) {
             return response("Unauthorized ".$ex->getMessage(), 401);
